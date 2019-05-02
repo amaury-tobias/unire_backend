@@ -4,7 +4,6 @@ const router = express.Router()
 const jwt = require('jsonwebtoken')
 const JWT = require('../JWT')
 
-
 router.get('/', function(req, res, next) {
   res.json({ message: 'ok' })
 })
@@ -27,7 +26,4 @@ router.post('/login', function(req, res, next) {
   })
 })
 
-router.get('/error', function (req, res, next) {
-  next(createError(500, 'Opsi!'))
-})
 module.exports = router

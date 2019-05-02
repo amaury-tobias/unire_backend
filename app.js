@@ -16,9 +16,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use('/', indexRouter)
 app.use('/api', noticiasRouter)
-app.use('/', passport.authenticate('jwt', { session: false }), indexRouter)
-app.use('/api',passport.authenticate('jwt', { session: false }), usuariosRouter)
+app.use('/api', passport.authenticate('jwt', { session: false }), usuariosRouter)
 
 app.use(function(req, res, next) {
   next(createError(404))
