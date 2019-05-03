@@ -1,7 +1,8 @@
 const passport = require('passport'),
   JwtStrategy = require('passport-jwt').Strategy,
   ExtractJwt = require('passport-jwt').ExtractJwt,
-  JWT = require('./JWT')
+  JWT = require('./JWT'),
+  UserModel = require('./models/usermodel')
 
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -11,21 +12,12 @@ const options = {
 }
 
 passport.use(
-  new JwtStrategy(options, function(jwt_payload, done) {
-    // console.log(jwt_payload)
-    /*
-    Find user and password
-    if (err) {
-      return done(err, false)
-    }
-    if (user) {
-      return done(null, user)
-    } else {
+  new JwtStrategy(options, function(jwtPayload, done) {
+    UserModel.findOne({ matricula: jwtPayload.matricula }, 'matricula picture', (err, user) => {
+      if (err) return done(err, false)
+      if (user) return done(null, user)
       return done(null, false)
-      // or you could create a new account
-    }
-    */
-    return done(null, { username: jwt_payload.username })
+    })
   })
 )
 

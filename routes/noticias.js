@@ -28,6 +28,7 @@ router.get('/noticias/:id', function(req, res, next) {
   res.json({
     id: req.params.id,
     title: 'Contaminacion ¿Por los autos?',
+    author: 'Cosme Fulanito',
     body: `
     Et eius doloremque hic. Soluta eum vel aut temporibus adipisci ut. Porro accusamus iste autem omnis quo magni nam odio.
 
@@ -48,8 +49,7 @@ router.get('/noticias/:id', function(req, res, next) {
     Itaque accusamus aliquam sed qui voluptatem optio illo et. Adipisci adipisci sunt unde distinctio unde error explicabo. Nesciunt incidunt cumque soluta reiciendis alias pariatur ipsam. Dolores non nobis magnam voluptates debitis alias.
 
     Magnam ipsam error nisi aliquam molestiae sit commodi. Ipsum cumque quibusdam quos. Sint natus qui id et molestias. Numquam est est et possimus quis.
-    `,
-    author: 'Cosme Fulanito'
+    `
   })
 })
 
