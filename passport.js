@@ -13,7 +13,7 @@ const options = {
 
 passport.use(
   new JwtStrategy(options, function(jwtPayload, done) {
-    UserModel.findOne({ matricula: jwtPayload.matricula }, 'matricula picture', (err, user) => {
+    UserModel.findOne({ matricula: jwtPayload.matricula }, 'matricula picture points achievements', (err, user) => {
       if (err) return done(err, false)
       if (user) return done(null, user)
       return done(null, false)
