@@ -12,7 +12,7 @@ var indexRouter = require('./routes/index')
 var noticiasRouter = require('./routes/noticias')
 var usuariosRouter = require('./routes/usuarios')
 
-var dbURL = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/unire'
+var dbURL = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/unire2'
 
 mongoose.connect(dbURL, { useNewUrlParser: true });
 mongoose.set('debug', true);

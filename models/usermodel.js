@@ -1,5 +1,4 @@
 const mongoose = require('mongoose'),
-  bcrypt = require('bcrypt'),
   Schema = mongoose.Schema
 
 const UserSchema = new Schema({
@@ -11,18 +10,9 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  picture: {
-    type: String
-  }
-})
-
-UserSchema.pre('save', next => {
-  const user = this
-  bcrypt.hash(user.password, 10, (err, hash) => {
-    if (err) return next(err)
-    user.password = hash
-    next()
-  })
+  picture: String,
+  points: Number,
+  achievements: Array
 })
 
 UserSchema.methods.isValidPassword = function(password, cb) {
